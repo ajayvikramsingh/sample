@@ -1,5 +1,8 @@
 .App {
+  border:10px dotted red;
   text-align: center;
+  background-color:blue;
+  color:yellow;
 }
 
 .list-item{

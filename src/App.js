@@ -7,10 +7,11 @@ class App extends Component {
     super(props);
     this.state = {
       newToDoItem: '',
-      toDoList: ['a', 's']
+      toDoList: [],           
     };
     this.onBtnClick = this.onBtnClick.bind(this);
     this.onNewTodoItemChange = this.onNewTodoItemChange.bind(this);
+    this.onRemoveclick=this.onRemoveclick.bind(this);
   }
 
   onNewTodoItemChange(event){
@@ -25,17 +26,24 @@ class App extends Component {
     newState.newToDoItem = '';
     this.setState(newState);
   }
+  onRemoveclick(index)
+  {
+    let newState=JSON.parse(JSON.stringify(this.state));
+    newState.toDoList.splice(index, 1);
+    this.setState(newState);
+  }
 
   render() {
     return (
-      <div className="App">
-        <h1>To Do</h1>
+
+<div className="App">
+        <h1 >To Do</h1>
         <input type="text" name="newToDoItem" value={this.state.newToDoItem} onChange={this.onNewTodoItemChange} />
         <button onClick={this.onBtnClick}>Add</button>        
         <div>
-          <ul>
-            {this.state.toDoList.map((toDoItem, index) => {return <li>{toDoItem}</li>})}
-          </ul>
+          <ol>
+            {this.state.toDoList.map((toDoItem, index) => {return <li key={index}>{toDoItem}<button onClick={()=>{this.onRemoveclick(index)}}>remove</button></li>} )}
+          </ol>
         </div>
       </div>
 
