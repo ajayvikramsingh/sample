@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ToDoLIst from './ToDoList';
 
 class App extends Component {
   constructor(props) {
@@ -73,15 +74,8 @@ class App extends Component {
           </div>
         }
 
+        <ToDoLIst toDoList={this.state.toDoList} onEditClick={this.onEditClick} onRemoveClick={this.onRemoveClick} />
 
-        <div>
-          <ol>
-            {this.state.toDoList.map((toDoItem, index) => {
-              return <li key={index}>{toDoItem}<button onClick={() => { this.onRemoveClick(index) }}>remove</button>
-                <button onClick={() => { this.onEditClick(index) }}>edit</button></li>
-            })}
-          </ol>
-        </div>
       </div>
 
 
