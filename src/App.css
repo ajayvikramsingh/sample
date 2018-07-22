@@ -1,3 +1,8 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 .App {
   border:10px dotted red;
   text-align: center;
